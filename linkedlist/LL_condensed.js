@@ -79,16 +79,31 @@ class linkedlist
 		newnode.next = prev.next;
 		prev.next=newnode;
 	}
-
 }
+//get the midpoint of the list
+const midpoint = (list)=>{
+  let slow = list.getAt(0); //first node
+  let fast = list.getAt(0); //first node
+  while(slow)
+  {
+    if(fast.next && fast.next.next)
+    {
+      fast = fast.next.next;
+      slow = slow.next
+    } else {
+      let mid;
+      mid = slow; return mid;
+    }
+  }
+}
+
 debugger;
-const nodeone = new Node();
+const nodeone = new Node(3);
 const list = new linkedlist();
 list.head = nodeone;
-list.insertAt(-4,0);
-list.insertAt(8,1);
-list.insertAt(23,2);
-console.log(list.size());//3
-list.removeAt(3);
-console.log(list.size());//2
-console.log(list.getAt(0));
+list.insertAt(-4,1);
+list.insertAt(8,2);
+list.insertAt(23,3);
+list.insertAt(50,3);
+console.log(list.size());//5
+console.log(midpoint(list));//8

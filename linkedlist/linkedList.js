@@ -9,6 +9,8 @@ class Node
 }
 class linkedlist
 {
+	//the three most important methods are :
+	//insertAt(pos); removeAt(pos); getAt(pos);
   constructor()
   {
     //initial state
@@ -89,7 +91,26 @@ class linkedlist
       node = node.next;
       counter++;
     }
-  }
+	}
+	//removeAt(n)
+	removeAt(n)
+	{
+		let counter = 0;
+		if(n===0){
+			this.head = this.head.next;
+			return;
+		}
+		let previous = this.getAt(n-1);
+		if(previous) previous.next=previous.next.next; 
+	}
+	//insertAt(data, pos)
+	insertAt(data, pos)
+	{
+		let newnode = new Node(data);
+		let prev = this.getAt(pos-1);
+		newnode.next = prev.next;
+		prev.next=newnode;
+	}
 
     
 }
@@ -101,16 +122,7 @@ list.insertFirst(9);
 list.insertFirst(3);
 list.insertFirst(5);
 list.insertFirst(23);
-console.log("first = ",list.getFirst());
-console.log("\nlast = ",list.getLast());
-console.log("\nsize=",list.size());
-list.insertLast(100);
-console.log("\nNew last =",list.getLast());
-console.log("\nnew size=",list.size());
-list.removeFirst(); //remove first
-console.log("\nnew first = ",list.getFirst());//should be different from above
-list.removeLast(); //remove last
-console.log("\nnew last = ",list.getLast());//should be different from above
-list.empty(); //empty list
-console.log("\nnew size=",list.size());//// should give zero
-debugger;
+console.log("\nfirst size=",list.size());
+list.insertAt(50,2);//insert at position 2
+console.log("\nnode @ position 2 after insert at pos 2 = ",list.getAt(2));//get third node
+console.log("\nresize=",list.size());

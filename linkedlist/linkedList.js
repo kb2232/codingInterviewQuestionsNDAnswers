@@ -1,60 +1,62 @@
-class Node {
-	constructor(data, next = null) {
-		//if no next is passed, then make it null
-		this.data = data;
-		this.next = next;
-	}
+//node
+class Node
+{
+  constructor(data, next=null)
+  {
+    this.data = data;
+    this.next = next;
+  }
 }
-
-class linkedList {
-	//head
-	constructor() {
-		this.head = null;
-	}
-	//insert node
-	insertFirst(data) {
-		this.head = new Node(data, this.head);
-	}
-	//size
-	size() {
-		let counter = 0;
-		let node = this.head;
-		while (node) {
-			counter++;
-			node = node.next;
-		}
-		return counter;
-	}
-	//get first
-	getFirst() {
-		return this.head;
-	}
-	//get last node
-	getLast() {
-		let node = this.head;
-		while (node < null) {
-			node = node.next;
-		}
-		return node;
-	}
-	//clear node
-	clearNode() {
-		this.head = null;
-	}
-	//remove first node
-	removeFirst() {
-		//if linked list is empty
-		if (!this.head) return;
-		this.head = this.head.next;
-	}
-	//remove last node
-	removeLast() {
-		//if linked list is empty
-    if (!this.head) return;
-    if(!this.head.next){
-      this.head=null;
-      return;
+class linkedlist
+{
+  constructor()
+  {
+    //initial state
+    this.head = null;
+  }
+  //insert element - make a new node
+  insertFirst(data)
+  {
+    this.head = new Node(data,this.head);
+  }
+  //size - total nodes
+  size(){
+    let count =0; let node = this.head;
+    while(node)
+    {
+      count++;
+      node = node.next;
     }
+    return count;
+  }
+  //get the first node of a linkedlist
+  getFirst()
+  {
+    return this.head;
+  }
+  //get the last node
+  getLast()
+  {
+    let node = this.head;
+    while(node)
+    {
+      if(node.next === null) return node;
+      node = node.next;
+    }
+  }
+  //empty linked list - make the head point straight to the null
+  empty()
+  {
+    this.head=null;
+  }
+  //remove first - head point should skip the first
+  removeFirst()
+  {
+    this.head = this.head.next;
+  }
+  //remove last
+  removeLast()
+  {
     let prev = this.head;
     let node = this.head.next;
     while(node.next)
@@ -64,28 +66,51 @@ class linkedList {
     }
     prev.next = null;
   }
-  
-  // insert last node
-  insertLast(data){
-    const last = this.getLast();
-    if(last)
+  //INSERT last
+  insertLast(data)
+  {
+    let newnode = new Node(data);
+    let lastnode = this.getLast();
+    if(lastnode)
     {
-      last.next = new Node(data);
-    } else {
-      //chain is empty
-      this.head = new Node(data);
+      lastnode.next = newnode;
+      newnode.next = null;
+    } else this.head = newnode;
+  }
+  //getAt - returns node at a given index
+  // head->'a'->'b'->'c'->null; getAt(1) returns 'b';
+  getAt(integer)
+  {
+    let counter = 0;
+    let node = this.head;
+    while(node)
+    {
+      if(counter === integer) return node;
+      node = node.next;
+      counter++;
     }
   }
+
+    
 }
-
-//test
-
-const nodeone = new Node(5);
 debugger;
-const list = new linkedList();
+const nodeone = new Node(15);
+const list = new linkedlist();
 list.head = nodeone;
+list.insertFirst(9);
+list.insertFirst(3);
+list.insertFirst(5);
 list.insertFirst(23);
-list.insertFirst(53);
-list.insertFirst(56);
-list.insertFirst(12);
+console.log("first = ",list.getFirst());
+console.log("\nlast = ",list.getLast());
+console.log("\nsize=",list.size());
+list.insertLast(100);
+console.log("\nNew last =",list.getLast());
+console.log("\nnew size=",list.size());
+list.removeFirst(); //remove first
+console.log("\nnew first = ",list.getFirst());//should be different from above
+list.removeLast(); //remove last
+console.log("\nnew last = ",list.getLast());//should be different from above
+list.empty(); //empty list
+console.log("\nnew size=",list.size());//// should give zero
 debugger;

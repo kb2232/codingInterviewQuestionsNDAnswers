@@ -47,9 +47,16 @@ class linkedlist
     }
   }
   //empty linked list - make the head point straight to the null
+  //empties the node
   empty()
   {
-    this.head=null;
+    this.head = null;
+  }
+  //test if it's empty
+  isEmpty()
+  {
+    if(this.head===null) return true;
+    else return false;
   }
   //remove first - head point should skip the first
   removeFirst()

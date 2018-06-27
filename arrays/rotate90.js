@@ -16,13 +16,16 @@ const transpose = (matrix)=>{
     });
   });
 }
-//given NxN matrix
-let x = [[0,1,3],[2,-4,9],[5,9,2]];
-let m = transpose(x); let N = 3;
-
-let mat = [[]];
-for(let i=0; i<N; i++)
-{
-  mat[[i]] = m[i].reverse()
+const reverse = (matrix, N) =>{
+  const transMat = transpose(matrix);
+  const revMat = [[]];
+  for(let x=0; x<N; x++)
+  {
+    revMat[[x]] = transMat[x];
+  }
+  return revMat;
 }
-console.log(mat);
+
+let x = [[0,1,3],[2,-4,9],[5,9,2]];
+let N = 3;
+console.log(reverse(x,N));

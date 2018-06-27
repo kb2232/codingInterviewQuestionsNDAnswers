@@ -26,10 +26,16 @@ class linkedlist
     }
     return count;
   }
-  //empty linked list - make the head point straight to the null
+  //empties the node
   empty()
   {
-    this.head=null;
+    this.head = null;
+  }
+  //test if it's empty
+  isEmpty()
+  {
+    if(this.head===null) return true;
+    else return false;
   }
   //getAt - returns node at a given index
   // head->'a'->'b'->'c'->null; getAt(1) returns 'b';
@@ -89,21 +95,76 @@ const midpoint = (list)=>{
     if(fast.next && fast.next.next)
     {
       fast = fast.next.next;
-      slow = slow.next
+      slow = slow.next;
     } else {
       let mid;
       mid = slow; return mid;
     }
   }
 }
+//circular list test
+const circularList = (list)=>{
+  let slow = list.getAt(0); //first node
+  let fast = list.getAt(0); //first node
+  while(slow)
+  {
+    if(fast.next && fast.next.next)
+    {
+      fast = fast.next.next;
+      slow = slow.next;
+    }
+    if(slow === fast) return true;
+  }
+  return false;
+} 
+//return K-th node from the last
+const kthNode = (k)=>{
+  let slow = list.getAt(0); //first node
+  let fast = list.getAt(0); //first node
+  //move fast by k
+  let i = 0;
+  while(i < k)
+  {
+    fast = fast.next;
+  }
+  //advance slow and fast by one
+  while(slow)
+  {
+    slow = slow.next;
+    fast = fast.next;
+    //check if fast is at last element
+    if(fast.next===null) return slow;
+  }
+}
+//remove duplicates
+const rmDuplicates = (list)=>{
+  let slow = list.getAt(0); let fast = list.getAt(0);
+  let countS = 0; let countF=0;
+  while(slow)
+  {
+    countS++;
+    countF = 1 + countS;
+    while(fast)
+    {
+      countF++;
+      if(fast===slow) list.removeAt(countF);
+      fast = fast.next;
+    }
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+}
+
 
 debugger;
-const nodeone = new Node(3);
+const nodeone = new Node(9);
 const list = new linkedlist();
 list.head = nodeone;
-list.insertAt(-4,1);
-list.insertAt(8,2);
-list.insertAt(23,3);
-list.insertAt(50,3);
-console.log(list.size());//5
-console.log(midpoint(list));//8
+list.insertAt(3,1);
+list.insertAt(-2,2);
+list.insertAt(1,3);
+list.insertAt(7,3);
+list.insertAt(0,4);
+console.log(list.size());//6
+console.log(midpoint(list));//-2
+console.log(kthNode(list));//1

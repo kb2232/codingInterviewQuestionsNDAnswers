@@ -61,8 +61,37 @@ class linkedlist {
 		//empty node
 		if (this.isEmpty()) return;
 		else {
-      //pos = 0;
-      
+			//pos = 0;
+			if (pos === 0) {
+				let node = this.getAt(0);
+				this.head = node.next;
+				return;
+			}
+			if (pos === this.size()) pos = pos - 1;
+			let prev = this.getAt(pos - 1);
+			prev = prev.next.next;
+			return;
 		}
 	}
+
+	//insertAt(pos)
+	/*
+    0. empty node
+    1. if pos = 0
+    2. if pos = size of list
+    3. if pos is in between
+  */
+	insertAt(data,pos) {
+    let newnode = new Node(data);
+    //empty node or pos=0
+    if(this.isEmpty()||pos===0)
+    {
+      this.head = newnode;
+      return;
+    } else {
+      let prev = getAt(pos-1);
+      prev.next = newnode;
+      newnode.next = prev.next.next;
+    }
+  }
 }

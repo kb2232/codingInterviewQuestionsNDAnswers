@@ -65,6 +65,20 @@ class STACK
 // }
 // stackRevStr('babatunde hello');
 
+// //stack min
+// stackMin()
+// {
+//   let min = 10000000;
+//   for(let x=0; x<this.arr.length; x++)
+//   {
+//     let s = this.remove();
+//     if(s <= min)
+//       min = s;
+//   }
+//   return min;
+// }
+
+
 //Use stack to check for balanced paranthesis
 const balanceParantheses = (str)=>{
   obj = new STACK();

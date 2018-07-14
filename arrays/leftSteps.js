@@ -17,17 +17,29 @@
 4.  notice that # only exist if row-col or col-row >=0
 */
 
-const steps = (n)=>{
-  for(let row=0; row<n; row++)
+// const steps = (n)=>{
+//   for(let row=0; row<n; row++)
+//   {
+//     var level = '';
+//     for(let col=0; col<n; col++)
+//     {
+//       if(row-col>=0)
+//         level +='#';
+//       else level +='';
+//     }
+//     console.log(level);
+//   }
+// }
+// steps(5);
+
+const steps2 = n => {
+  let r=n,c=n;
+  for(let i=0; i<n; i++)
   {
-    var level = '';
-    for(let col=0; col<n; col++)
-    {
-      if(row-col>=0)
-        level +='#';
-      else level +='';
-    }
+    let level = '';
+    for(let j=0; j<c; j++)
+      (i>=j)?level+='#':level+=' ';
     console.log(level);
   }
 }
-steps(5);
+steps2(5);

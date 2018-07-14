@@ -1,7 +1,7 @@
 /*
 replace " " with '%20'
 input: ("Mr John Smith ", 13);
-output: Mr%20John@20Smith
+output: Mr%20John%20Smith
  */
 const URLify = (str,n)=>{
   let newStr = "";

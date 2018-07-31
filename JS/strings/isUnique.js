@@ -2,6 +2,13 @@
 "helo"==>true
 "hello"==>false
 */
+/*
+"helo"==>true
+"hello"==>false
+1. GENERATE key and value map
+2. if key count is > 1 then return false
+3. return true at the end
+*/
 const isUnique = (str)=>{
   let obj = {};
   for(let char of str)

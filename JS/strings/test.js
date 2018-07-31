@@ -1,24 +1,23 @@
+//find palindromes
+//palindrome("abba")=== true
+//palindrome("abcdefg")===false
+
 /**
- * 1. generate key and value 
- * 2. set max, and character, if key is greate than max then max = key and character = value
- * 3. print max and character
- * 
+ * 1. reverse the string
+ * 2. check if the str and it's reverse equal
  */
 
- const maxChar = ((str)=>
- {
-  let obj = {};
-  for(let char of str)
-    (!obj[char])?obj[char]=1:obj[char]++;
-  let max = 0;
-  let character = '';
-  for(let char in obj)
-  {
-    if(obj[char] >= max)
-    {
-      max = obj[char];
-      character = char;
-    }
-  }
-  console.log(character," appears ",max," times.");
- })("#%he3#33ll#l#o")
+ const Palindrome = function(str){
+  this.str = str;
+  this.getRev = function(){
+    return this.str.split('').reverse().join('');
+  };
+ }
+
+ Palindrome.prototype.getPrint = function(){
+   console.log(this.str===this.getRev());
+ }
+
+ let str = "abba";
+ let test = new Palindrome(str);
+ test.getPrint();

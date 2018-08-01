@@ -1,23 +1,22 @@
-//find palindromes
-//palindrome("abba")=== true
-//palindrome("abcdefg")===false
-
+// sentence cap
 /**
- * 1. reverse the string
- * 2. check if the str and it's reverse equal
+ * 1. break the sentence into an array
+ * 2. for each word in the array, cap the first letter
  */
 
- const Palindrome = function(str){
-  this.str = str;
-  this.getRev = function(){
-    return this.str.split('').reverse().join('');
-  };
- }
+const Cap = function(sentence) {
+  this.sentence = sentence;
+  this.arr = sentence.split(' ');
+  this.newSen = [];
+  this.setCap = function()
+  {
+    for(let word of this.arr)
+    {
+      this.newSen.push(word[0].toUpperCase()+word.slice(1));
+    }
+    return this.newSen.join(' ');
+  }
+}
 
- Palindrome.prototype.getPrint = function(){
-   console.log(this.str===this.getRev());
- }
-
- let str = "abba";
- let test = new Palindrome(str);
- test.getPrint();
+const sen1 = new Cap("a man is short");
+console.log(sen1.setCap());
